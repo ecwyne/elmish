@@ -1,12 +1,18 @@
 html = require('react').DOM
+R = require('ramda')
 
 effect = (id) ->
   {$github: ['stars', {id}, ['full_name', 'html_url', 'stargazers_count']]}
 
 view = (data) ->
-  if data.result
-    data.result.map (repo) ->
+  if R.path(['stars', '$pending'], data)
+    html.div
+      className: 'loading'
+      'Loading...'
+  else if data.stars
+    data.stars.map (repo) ->
       html.div
+        key: repo.id
         className: 'repo-item'
         html.a
           className: 'name'
@@ -18,9 +24,9 @@ view = (data) ->
   else if data.error
     html.div
       className: 'error'
-      error.message
+      data.error.message
   else
-    html.div
-      className: 'loading'
+    console.warn("shouldn't be here")
+    
 
 module.exports = {effect, view}
