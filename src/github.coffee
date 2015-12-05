@@ -16,7 +16,7 @@ translateGithubApi = ({$github: [name, args, fields]}) ->
     when 'stars'
       $fetch:
         name: name
-        args: [base + 'starred', {method: 'get'}]
+        args: ["https://api.github.com/users/" + args.login + "/" + 'starred', {method: 'get'}]
     else
       console.warn "unknown github request", [name, args, fragments]
 

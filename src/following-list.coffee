@@ -15,7 +15,7 @@ view = ({selected, select, data}) ->
       html.div
         key: user.id
         className: 'user-item' + (if user.id is selected then ' selected' else '')
-        onClick: -> select(user.id)
+        onClick: -> select(user.login)
         userItem.view(user)
   else if data.error
     html.div

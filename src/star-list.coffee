@@ -1,8 +1,8 @@
 html = require('react').DOM
 R = require('ramda')
 
-effect = (id) ->
-  {$github: ['stars', {id}, ['full_name', 'html_url', 'stargazers_count']]}
+effect = (login) ->
+  {$github: ['stars', {login}, ['full_name', 'html_url', 'stargazers_count']]}
 
 view = (data) ->
   if R.path(['stars', '$pending'], data)
