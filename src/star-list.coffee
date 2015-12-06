@@ -33,11 +33,7 @@ view = (data) ->
       className: 'error'
       data.error.message
   else
-<<<<<<< HEAD
-    console.warn("shouldn't be here")
-=======
     console.warn("this shouldn't happen")
->>>>>>> upstream/github
     
 
 module.exports = {effect, view}
